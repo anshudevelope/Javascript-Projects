@@ -1,4 +1,4 @@
-const apiKey = "7f6e57313e46434d95b1b5fe964d5876";
+const apiKey = "6eedaa9ceba77d87b8aca0750b7cbd04";
 
 const blogContainer = document.getElementById('blog-container');
 
@@ -7,7 +7,7 @@ const searchButton = document.getElementById("search_button");
 
 async function fetchRandomNews() {
     try {
-        const apiUrl = `https://newsapi.org/v2/everything?q=tesla&from=2025-02-28&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
+        const apiUrl = `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=20&apiKey=${apiKey}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         return data.articles;
@@ -25,10 +25,10 @@ searchButton.addEventListener("click", async () => {
             const articles = await fetchNewsQuery(query);
             displayBlogs(articles);
         } catch (error) {
-            console.log("Error fetching news by query, error")
+            console.error("Error fetching news by query:", error);
         }
     }
-})
+});
 
 async function fetchNewsQuery(query) {
     try {
@@ -48,7 +48,7 @@ function displayBlogs(articles) {
         const blogCard = document.createElement("div");
         blogCard.classList.add("blog-card");
         const img = document.createElement("img");
-        img.src = article.urlToImage;
+        img.src = article.image;
         img.alt = article.title;
         const title = document.createElement("h2");
         const truncatedTitle = article.title.length > 30 ? article.title.slice(0, 30) + "...." : article.title;
