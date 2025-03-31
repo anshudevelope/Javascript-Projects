@@ -2,8 +2,8 @@ const apiKey = "6eedaa9ceba77d87b8aca0750b7cbd04";
 
 const blogContainer = document.getElementById('blog-container');
 
-const searchInput = document.getElementById("search_input");
-const searchButton = document.getElementById("search_button");
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
 
 async function fetchRandomNews() {
     try {
